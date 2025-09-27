@@ -2,24 +2,16 @@
 
 // Coloca o encoding para UTF8 para exibir acentuação
 Console.OutputEncoding = System.Text.Encoding.UTF8;
-
-decimal precoInicial = 0;
-decimal precoPorHora = 0;
+var estacionamento = new Estacionamento();
+var controller = new EstacionamentoController();
 
 Console.WriteLine("Seja bem vindo ao sistema de estacionamento!\n" +
-                  "Digite o preço inicial:");
-precoInicial = Convert.ToDecimal(Console.ReadLine());
-
-Console.WriteLine("Agora digite o preço por hora:");
-precoPorHora = Convert.ToDecimal(Console.ReadLine());
-
-// Instancia a classe Estacionamento, já com os valores obtidos anteriormente
-Estacionamento es = new Estacionamento(precoInicial, precoPorHora);
+                  $"O preço inicial é de: {estacionamento.precoInicial} ");
+Console.WriteLine($"E o preço por hora é:{estacionamento.precoPorHora}");
 
 string opcao = string.Empty;
 bool exibirMenu = true;
 
-// Realiza o loop do menu
 while (exibirMenu)
 {
     Console.Clear();
@@ -32,15 +24,15 @@ while (exibirMenu)
     switch (Console.ReadLine())
     {
         case "1":
-            es.AdicionarVeiculo();
+            controller.AdicionarVeiculo();
             break;
 
         case "2":
-            es.RemoverVeiculo();
+            controller.RemoverVeiculo();
             break;
 
         case "3":
-            es.ListarVeiculos();
+            controller.ListarVeiculos();
             break;
 
         case "4":
